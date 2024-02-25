@@ -18,7 +18,9 @@ jobs:
           path: testrepo2 # This is the directory where Repo 2 will be checked out
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          cd testrepo2
+          npm install
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
