@@ -1,0 +1,27 @@
+name: Run Cypress Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-cypress-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo 2
+        uses: actions/checkout@v2
+        with:
+          repository: DenzMoses/testrepo2
+          ref: main
+          path: repo2 # This is the directory where Repo 2 will be checked out
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Cypress Tests
+        run: |
+          cd repo2
+          npm ci
+          npm run cy:run -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
