@@ -24,6 +24,6 @@ jobs:
       - name: Cypress run
         working-directory: ./testrepo2
         run: |
-          start: npm run start
-          build: npm run build
+          npm start &
+          npx cypress run
           
